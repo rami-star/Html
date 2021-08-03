@@ -1,0 +1,74 @@
+<?php
+//index.php
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>shopping cart</title>
+	<link rel="stylesheet" type="text/css" href="new.css">
+	<link rel="stylesheet" type="text/css" href="C:\Users\Rami\Desktop\For_Website\Bootstrap\css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="C:\Users\Rami\Desktop\For_Website\Bootstrap\js\bootstrap.min.js">
+	<link rel="stylesheet" type="text/css" href="C:\Users\Rami\Desktop\For_Website\Bootstrap\js\jquery-3.5.1.min.js">
+</head>
+<body>
+
+	<div class="container">
+		<br/>
+		<h3 align="center">PhP  shoppping</h3>
+		<br/>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Menu</span>
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</button>
+					<a class="navbar-brand" href="/">Webslesson</a>
+				</div>
+				<div id="navbar-cart" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<a id="cart-popover" class="btn" data-placement="bottom" title="shoppping Cart">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+								<span class="badge"></span>
+								<span class="total_price">$0.00</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</nav>
+       <div id="popover_content_wrapper" style="display: none;">
+       	<span id="cart_details"></span>
+       	<div align="right">
+       		<a href="#" class="btn btn-primary" id="check_out_cart">
+       			<span class="glyphicon glyphicon-shopping-cart"></span>Check out</a>
+       		<a href="#" class="btn btn-default" id="clear_cart">
+       			<span class="glyphicon glyphicon-trash"></span>Clear</a>
+       	</div>
+       </div>
+       <div id="display_item"></div>
+	</div>
+
+</body>
+</html>
+<script>
+$(document).ready(function(){
+	function load_product()
+
+	{
+		$.ajax({
+			url:"fetch_item.php",
+			method:"POST",
+			success:function(data)
+			{
+				$('#display_item').html(data);
+			}
+		});
+	}
+});
+	
+
+</script>
